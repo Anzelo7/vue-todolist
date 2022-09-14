@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.7.10/vue.min.js"
+        integrity="sha512-H8u5mlZT1FD7MRlnUsODppkKyk+VEiCmncej8yZW1k/wUT90OQon0F9DSf/2Qh+7L/5UHd+xTLrMszjHEZc2BA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="js/script.js" defer></script>
+    <title>ToDoList</title>
+</head>
+
+<body>
+    <header class="container">
+        <div class="row d-flex align-items-center flex-column">
+            <div class="col-6 d-flex justify-content-center position-fixed">
+                <img class="w-100 altezza" alt="">
+
+            </div>
+            <div class="col-6 margin">
+                <h1 class="text-center text-info">To Do List</h1>
+            </div>
+        </div>
+    </header>
+    <main class="mt-5 pt-5" id="todosection">
+        <div class="container">
+            <div class="row d-flex justify-content-center">
+                <div class="col-12 d-flex justify-content-center">
+                    <label for="input" class="text-danger fs-5 ">What you need to do?</label>
+                    <input @keyUp.enter="addToList()" id="input" type="text" v-model="inputToDo" class="mx-3">
+                    <button @click="addToList()" class="btn btn-success rounded-2">Add</button>
+                </div>
+            </div>
+        </div>
+        <div class="container pt-5">
+            <div class="row d-flex justify-content-center">
+                <div class="col-10 border border-info rounded-3 p-5">
+                    <h2 class="p-3 text-primary">Things To Do...</h2>
+                    <ul>
+                        <li class="my-3 fs-5 d-flex"
+                            :class="(action.done === true)? 'text-decoration-line-through' : ''"
+                            v-for="(action, index) in toDoItem">
+                            <p class="px-3 border border-info rounded-3 me-3">{{index + 1}}</p>
+                            <div @click="changeDoneProp(index)">{{action.text}}</div>
+                            <div @click="deleteItem(index)" class="btn btn-danger ms-auto d-flex align-items-center">
+                                <i class="bi bi-x-circle"></i>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>

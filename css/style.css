@@ -1,0 +1,21 @@
+* {
+    font-family: Arial,
+        Helvetica,
+        sans-serif;
+}
+
+.altezza {
+    height: 200px;
+}
+
+.margin {
+    margin-top: 75px !important;
+}
+
+li {
+    cursor: pointer;
+}
+
+li :after {
+    content: \F623;
+}
